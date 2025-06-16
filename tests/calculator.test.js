@@ -23,4 +23,12 @@ describe("String Calculator", () => {
   test("should handle newlines as valid delimiters", () => {
     expect(add("1\n2,3")).toBe(6);
   });
+
+  test("should handle custom delimiter defined using //", () => {
+    expect(add("//;\n1;2")).toBe(3);
+    expect(add("//*\n4*5*6")).toBe(15);
+    expect(() => add("//;1;2")).toThrow(
+      "Invalid input: custom delimiter syntax must include a newline"
+    );
+  });
 });
