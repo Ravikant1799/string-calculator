@@ -24,6 +24,11 @@ function add(numbers) {
   const parts = tempNumbers.split(",");
 
   const nums = parts.map((str) => parseInt(str, 10));
+  const negatives = nums.filter((num) => num < 0);
+  console.log("negs ", negatives);
+  if (negatives.length > 0) {
+    throw new Error(`negative numbers not allowed: ${negatives.join(",")}`);
+  }
   return nums.reduce((sum, num) => sum + num, 0);
 }
 

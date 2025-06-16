@@ -31,4 +31,14 @@ describe("String Calculator", () => {
       "Invalid input: custom delimiter syntax must include a newline"
     );
   });
+
+  test("should throw error if negative number is present", () => {
+    expect(() => add("1,-2,3")).toThrow("negative numbers not allowed: -2");
+  });
+
+  test("should list all negative numbers in the error message", () => {
+    expect(() => add("1,-2,-5,4")).toThrow(
+      "negative numbers not allowed: -2,-5"
+    );
+  });
 });
